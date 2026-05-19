@@ -288,3 +288,36 @@ test("Can find index with node", () => {
     expect(ll3.findIndex("brown")).toBe(2);
     expect(ll3.findIndex("fox")).toBe(3);
 })
+
+test("String for empty linked list", () => {
+    const ll = new LinkedList();
+    expect(ll.toString()).toBe("");
+});
+
+test("String for length 1 linked lists", () => {
+    const ll = new LinkedList();
+    ll.list = new Node("a");
+    expect(ll.toString()).toBe("( a ) -> null");
+
+    const ll2 = new LinkedList();
+    ll2.list = new Node(5);
+    expect(ll2.toString()).toBe("( 5 ) -> null");
+
+    const ll3 = new LinkedList();
+    ll3.list = new Node(0.5);
+    expect(ll3.toString()).toBe("( 0.5 ) -> null");
+})
+
+test("String for linked list with a length > 1", () => {
+    const ll = new LinkedList();
+    ll.list = new Node(1, new Node(2, new Node(3, null)));
+    expect(ll.toString()).toBe("( 1 ) -> ( 2 ) -> ( 3 ) -> null");
+
+    const ll2 = new LinkedList();
+    ll2.list = new Node("a", new Node("b", new Node("c", new Node("d", null))));
+    expect(ll2.toString()).toBe("( a ) -> ( b ) -> ( c ) -> ( d ) -> null");
+
+    const ll3 = new LinkedList();
+    ll3.list = new Node("Cat", new Node("in", new Node("the", new Node("hat.", null))));
+    expect(ll3.toString()).toBe("( Cat ) -> ( in ) -> ( the ) -> ( hat. ) -> null");
+})

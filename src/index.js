@@ -105,6 +105,20 @@ export class LinkedList{
 
         return -1;
     }
+
+    toString(){
+        if(this.list === null) return "";
+
+        let copy = this.list;
+        let string = "";
+        while(copy != null){
+            string += `( ${copy.value} ) -> `;
+            copy = copy.nextNode;
+        }
+
+        string += "null";
+        return string;
+    }
 }
 
 export class Node{
