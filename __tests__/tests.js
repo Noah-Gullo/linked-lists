@@ -229,3 +229,37 @@ test("Pop when linked list has more than 1 element", () => {
     expect(ll2.pop()).toBe(500);
     expect(ll2).toMatchObject({list: new Node(400, new Node(200, null))});
 })
+
+test("Linked list does not contain value", () => {
+    const ll = new LinkedList();
+    expect(ll.contains("Nothing")).toBe(false);
+
+    const ll2 = new LinkedList();
+    ll2.list = new Node("a", null);
+    expect(ll2.contains("b")).toBe(false);
+
+    const ll3 = new LinkedList();
+    ll3.list = new Node(0.5, new Node(1, new Node(1.5, new Node(2, new Node(2.5, null)))));
+    expect(ll3.contains(100)).toBe(false);
+})
+
+test("Linked list contains value", () => {
+    const ll = new LinkedList();
+    ll.list = new Node(50, null);
+    expect(ll.contains(50)).toBe(true);
+
+    const ll2 = new LinkedList();
+    ll2.list = new Node("hi", new Node("hello", new Node("greetings", new Node("good morning"))));
+    expect(ll2.contains("hi")).toBe(true);
+    expect(ll2.contains("hello")).toBe(true);
+    expect(ll2.contains("greetings")).toBe(true);
+    expect(ll2.contains("good morning")).toBe(true);
+
+    const ll3 = new LinkedList();
+    ll3.list = new Node(0.5, new Node("Exuberance", new Node("a", new Node(-5, new Node(500, null)))));
+    expect(ll3.contains(0.5)).toBe(true);
+    expect(ll3.contains("Exuberance")).toBe(true);
+    expect(ll3.contains("a")).toBe(true);
+    expect(ll3.contains(-5)).toBe(true);
+    expect(ll3.contains(500)).toBe(true);
+})

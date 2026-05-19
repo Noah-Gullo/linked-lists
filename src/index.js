@@ -9,12 +9,12 @@ export class LinkedList{
             this.list = new Node(value, null);
             return;
         }else{
-            let listCopy = this.list;
-            while(listCopy.nextNode != null){
-                listCopy = listCopy.nextNode;
+            let copy = this.list;
+            while(copy.nextNode != null){
+                copy = copy.nextNode;
             }
 
-            listCopy.nextNode = new Node(value, null);
+            copy.nextNode = new Node(value, null);
         }
     }
 
@@ -51,12 +51,12 @@ export class LinkedList{
         if(this.list === null){
             return undefined;
         }else{
-            let listCopy = this.list;
-            while(listCopy.nextNode != null){
-                listCopy = listCopy.nextNode;
+            let copy = this.list;
+            while(copy.nextNode != null){
+                copy = copy.nextNode;
             }
 
-            return listCopy.value;
+            return copy.value;
         }
     }
 
@@ -64,13 +64,13 @@ export class LinkedList{
         if(index < 0){
             return undefined;
         }else{
-            let listCopy = this.list;
+            let copy = this.list;
             for(let i = 0; i < index; i++){
-                if(listCopy === null) return undefined;
-                listCopy = listCopy.nextNode;
+                if(copy === null) return undefined;
+                copy = copy.nextNode;
             }
 
-            return listCopy.value;
+            return copy.value;
         }
     }
 
@@ -82,6 +82,16 @@ export class LinkedList{
             this.list = this.list.nextNode;
             return headValue;
         }
+    }
+
+    contains(value){
+        let copy = this.list;
+        while(copy != null){
+            if(copy.value === value) return true;
+            copy = copy.nextNode;
+        }
+
+        return false;
     }
 }
 
