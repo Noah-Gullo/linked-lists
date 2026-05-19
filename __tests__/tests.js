@@ -112,17 +112,17 @@ test("Return undefined for head() on an empty ll", () => {
     expect(ll.head()).toBe(undefined);
 })
 
-test("Return correct value for length 1 ll", () => {
+test("Return first value for length 1 ll", () => {
     const ll = new LinkedList();
     ll.list = new Node("hi", null);
     expect(ll.head()).toBe("hi");
 
     const ll2 = new LinkedList();
-    ll2.list = new Node(500, new Node(0, null));
+    ll2.list = new Node(500);
     expect(ll2.head()).toBe(500);
 })
 
-test("Correct head() for linked list longer than 1", () => {
+test("Return first value for linked list longer than 1", () => {
     const ll = new LinkedList();
     ll.list = new Node("a", new Node("b", new Node("c", null)));
     expect(ll.head()).toBe("a");
@@ -134,4 +134,33 @@ test("Correct head() for linked list longer than 1", () => {
     const ll3 = new LinkedList();
     ll3.list = new Node(-0.5, new Node("asdfadf", new Node(11234, null)));
     expect(ll3.head()).toBe(-0.5);
+})
+
+test("Return undefined for tail on an empty linked list", () => {
+    const ll = new LinkedList();
+    expect(ll.tail()).toBe(undefined);
+})
+
+test("Return only value for a linked list of length 1", () => {
+    const ll = new LinkedList();
+    ll.list = new Node("bye", null);
+    expect(ll.tail()).toBe("bye");
+
+    const ll2 = new LinkedList();
+    ll2.list = new Node(5);
+    expect(ll2.tail()).toBe(5);
+})
+
+test("Return last value for a linked list with length > 1", () => {
+    const ll = new LinkedList();
+    ll.list = new Node("This", new Node("is", new Node("a", new Node("test."))));
+    expect(ll.tail()).toBe("test.");
+    
+    const ll2 = new LinkedList();
+    ll2.list = new Node(-50, new Node(0, new Node(50, new Node(100, null))));
+    expect(ll2.tail()).toBe(100);
+
+    const ll3 = new LinkedList();
+    ll3.list = new Node("z", new Node("y", new Node("x", new Node("...", new Node("a")))));
+    expect(ll3.tail()).toBe("a");
 })

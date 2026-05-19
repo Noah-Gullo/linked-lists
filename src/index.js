@@ -40,10 +40,23 @@ export class LinkedList{
     }
 
     head(){
-        if(this.list == null){
+        if(this.list === null){
             return undefined;
         }else{
             return this.list.value;
+        }
+    }
+
+    tail(){
+        if(this.list === null){
+            return undefined;
+        }else{
+            let listCopy = this.list;
+            while(listCopy.nextNode != null){
+                listCopy = listCopy.nextNode;
+            }
+
+            return listCopy.value;
         }
     }
 }
