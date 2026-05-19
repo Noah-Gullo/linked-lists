@@ -80,3 +80,28 @@ test("Prepending to a long linked list", () => {
     expect(ll).toMatchObject({list: new Node(0, new Node(100, new Node(200, new Node(300, new Node(400, new Node(500, 
                                     new Node(600, new Node(700, new Node(800, new Node(900, new Node(1000)))))))))))});
 })
+
+test("Size of blank linked list", () => {
+    const ll = new LinkedList();
+    expect(ll.size()).toBe(0);
+})
+
+test("Size of 1", () => {
+    const ll = new LinkedList();
+    ll = new Node("Hello, world!", null);
+    expect(ll.size()).toBe(0);
+})
+
+test("More than 1 value", () => {
+    const ll = new LinkedList();
+    ll = new Node(1, new Node(2, new Node(3, null)));
+    expect(ll.size()).toBe(3);
+
+    const ll2 = new LinkedList();
+    ll2 = new Node("a", new Node(5, new Node(-0.5, new Node(3, new Node("Fifty", null)))));
+    expect(ll.size()).toBe(5);
+
+    const ll3 = new LinkedList();
+    ll3 = new Node(1, new Node(2, new Node(3, new Node(4, new Node(5, new Node(6, new Node(7, new Node(8, null))))))));
+    expect(ll.size()).toBe(8);
+})
