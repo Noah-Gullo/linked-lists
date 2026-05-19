@@ -4,7 +4,7 @@ export class LinkedList{
         this.list = null;
     }
     
-    append = function(value){
+    append(value){
         if(this.list === null){
             this.list = new Node(value, null);
             return;
@@ -18,11 +18,25 @@ export class LinkedList{
         }
     }
 
-    prepend = function(value){
+    prepend(value){
         console.log(this.list);
         let newNode = new Node(value, this.list);
         this.list = newNode;
         console.log(this.list);
+    }
+
+    size(){
+        if(this.list === null){
+            return 0;
+        } else{
+            let size = 0;
+            let copy = this.list;
+            while(copy != null){
+                size++;
+                copy = copy.nextNode;
+            }
+            return size;
+        }
     }
 }
 
