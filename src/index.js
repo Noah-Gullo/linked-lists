@@ -17,6 +17,13 @@ export class LinkedList{
             listCopy.nextNode = new Node(value, null);
         }
     }
+
+    prepend = function(value){
+        console.log(this.list);
+        let newNode = new Node(value, this.list);
+        this.list = newNode;
+        console.log(this.list);
+    }
 }
 
 export class Node{

@@ -25,7 +25,7 @@ test("Appending numbers to a linked list", () => {
     expect(ll).toMatchObject({list: new Node(2, new Node(50, new Node(-3, null)))});
 })
 
-test("Testing mix of types", () => {
+test("Appending mix of types", () => {
     const ll = new LinkedList();
     ll.append(2);
     ll.append("bob");
@@ -33,11 +33,50 @@ test("Testing mix of types", () => {
     expect(ll).toMatchObject({list: new Node(2, new Node("bob", new Node(-3.5, null)))});
 })
 
-test("Testing long linked list appending", () => {
+test("Appending long linked list appending", () => {
     const ll = new LinkedList();
     ll.append("tom");
     ll.append("mary");
     ll.append("jane");
     ll.append("peter");
     expect(ll).toMatchObject({list: new Node("tom", new Node("mary", new Node("jane", new Node("peter", null))))});
+})
+
+test("Prepending to blank list", () => {
+    const ll = new LinkedList();
+    ll.prepend("a");
+    expect(ll).toMatchObject({list: new Node("a", null)});
+    
+    const ll2 = new LinkedList();
+    ll2.prepend(0.5);
+    expect(ll2).toMatchObject({list: new Node(0.5, null)});
+})
+
+test("Prepending to existing list", () => {
+    const ll = new LinkedList();
+    const llNodes = new Node("banana", new Node("cherry", null));
+    ll.list = llNodes;
+    ll.prepend("apple");
+    expect(ll).toMatchObject({list: new Node("apple", new Node("banana", new Node("cherry", null)))});
+
+    const ll2 = new LinkedList();
+    const ll2Nodes = new Node(5, new Node(10, new Node(15, new Node(20, null))));
+    ll2.list = ll2Nodes;
+    ll2.prepend(0);
+    ll2.prepend(-5);
+    expect(ll2).toMatchObject({list: new Node(-5, new Node(0, new Node(5, new Node(10, new Node(15, new Node(20, null))))))});
+})
+
+
+test("Prepending to a long linked list", () => {
+    const ll = new LinkedList();
+    const llNodes = new Node(500, new Node(600, new Node(700, new Node(800, new Node(900, new Node(1000))))));
+    ll.list = llNodes;
+    ll.prepend(400);
+    ll.prepend(300);
+    ll.prepend(200);
+    ll.prepend(100);
+    ll.prepend(0);
+    expect(ll).toMatchObject({list: new Node(0, new Node(100, new Node(200, new Node(300, new Node(400, new Node(500, 
+                                    new Node(600, new Node(700, new Node(800, new Node(900, new Node(1000)))))))))))});
 })
