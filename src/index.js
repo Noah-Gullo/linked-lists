@@ -1,4 +1,4 @@
-class LinkedList{
+export class LinkedList{
     list;
     constructor(){
         this.list = null;
@@ -13,13 +13,13 @@ class LinkedList{
             while(listCopy.nextNode != null){
                 listCopy = listCopy.nextNode;
             }
-            
+
             listCopy.nextNode = new Node(value, null);
         }
     }
 }
 
-class Node{
+export class Node{
     value = null;
     nextNode = null;
 
@@ -28,11 +28,3 @@ class Node{
         this.nextNode = nextNode;
     }
 }
-
-const list = new LinkedList();
-
-list.append("dog");
-list.append("cat");
-list.append("mouse");
-
-console.log(list);
