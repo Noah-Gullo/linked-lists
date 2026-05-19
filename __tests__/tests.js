@@ -1,3 +1,4 @@
+import { experiments } from "webpack";
 import { LinkedList, Node } from "../src/index.js";
 
 test("Blank linked list", () => {
@@ -104,4 +105,33 @@ test("More than 1 value", () => {
     const ll3 = new LinkedList();
     ll3.list = new Node(1, new Node(2, new Node(3, new Node(4, new Node(5, new Node(6, new Node(7, new Node(8, null))))))));
     expect(ll3.size()).toBe(8);
+})
+
+test("Return undefined for head() on an empty ll", () => {
+    const ll = new LinkedList();
+    expect(ll.head()).toBe(undefined);
+})
+
+test("Return correct value for length 1 ll", () => {
+    const ll = new LinkedList();
+    ll.list = new Node("hi", null);
+    expect(ll.head()).toBe("hi");
+
+    const ll2 = new LinkedList();
+    ll2.list = new Node(500, new Node(0, null));
+    expect(ll2.head()).toBe(500);
+})
+
+test("Correct head() for linked list longer than 1", () => {
+    const ll = new LinkedList();
+    ll.list = new Node("a", new Node("b", new Node("c", null)));
+    expect(ll.head()).toBe("a");
+
+    const ll2 = new LinkedList();
+    ll2.list = new Node(10, new Node(9, new Node(5), null));
+    expect(ll2.head()).toBe(10);
+
+    const ll3 = new LinkedList();
+    ll3.list = new Node(-0.5, new Node("asdfadf", new Node(11234, null)));
+    expect(ll3.head()).toBe(-0.5);
 })

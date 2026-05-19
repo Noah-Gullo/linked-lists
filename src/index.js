@@ -38,6 +38,14 @@ export class LinkedList{
             return size;
         }
     }
+
+    head(){
+        if(this.list == null){
+            return undefined;
+        }else{
+            return this.list.value;
+        }
+    }
 }
 
 export class Node{
