@@ -164,3 +164,39 @@ test("Return last value for a linked list with length > 1", () => {
     ll3.list = new Node("z", new Node("y", new Node("x", new Node("...", new Node("a")))));
     expect(ll3.tail()).toBe("a");
 })
+
+
+test("Return value at index 0 for length 1", () => {
+    const ll = new LinkedList();
+    ll.list = new Node("a", null);
+    expect(ll.at(0)).toBe("a");
+
+     const ll2 = new LinkedList();
+    ll2.list = new Node(123, null);
+    expect(ll2.at(0)).toBe(123);
+})
+
+test("Return undefined for invalid index", () => {
+    const ll = new LinkedList();
+    expect(ll.at(100)).toBe(undefined);
+
+    const ll2 = new LinkedList();
+    ll2.list = new Node("negative", new Node("index", null));
+    expect(ll2.at(-1)).toBe(undefined);
+
+    const ll3 = new LinkedList();
+    ll3.list = new Node(0, new Node(1, new Node(2, null)));
+    expect(ll3.at(100)).toBe(undefined);
+})
+
+test("Return correct value for valid index", () => {
+    const ll = new LinkedList();
+    ll.list = new Node("Hello", new Node("there", new Node("General", new Node("Grievous."))));
+    expect(ll.at(1)).toBe("there");
+    expect(ll.at(2)).toBe("General");
+
+    const ll2 = new LinkedList();
+    ll2.list = new Node(-0.1, new Node(0, new Node(0.1, new Node(0.2, new Node(0.3, null)))));
+    expect(ll2.at(0)).toBe(-0.1);
+    expect(ll2.at(4)).toBe(0.3);
+})

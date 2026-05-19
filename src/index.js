@@ -59,6 +59,20 @@ export class LinkedList{
             return listCopy.value;
         }
     }
+
+    at(index){
+        if(index < 0){
+            return undefined;
+        }else{
+            let listCopy = this.list;
+            for(let i = 0; i < index; i++){
+                if(listCopy === null) return undefined;
+                listCopy = listCopy.nextNode;
+            }
+
+            return listCopy.value;
+        }
+    }
 }
 
 export class Node{
