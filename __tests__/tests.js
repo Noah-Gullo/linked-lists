@@ -200,3 +200,32 @@ test("Return correct value for valid index", () => {
     expect(ll2.at(0)).toBe(-0.1);
     expect(ll2.at(4)).toBe(0.3);
 })
+
+test("Pop off empty list should return undefined", () => {
+    const ll = new LinkedList();
+    expect(ll.pop()).toBe(undefined);
+})
+
+test("Pop off linked list length 1", () => {
+    const ll = new LinkedList();
+    ll.list = new Node(1, null);
+    expect(ll.pop()).toBe(1);
+    expect(ll).toMatchObject({list: null});
+
+    const ll2 = new LinkedList();
+    ll2.list = new Node("a", null);
+    expect(ll2.pop()).toBe("a");
+    expect(ll2).toMatchObject({list: null});
+})
+
+test("Pop when linked list has more than 1 element", () => {
+    const ll = new LinkedList();
+    ll.list = new Node("a", new Node("b", new Node("c", new Node("d", null))));
+    expect(ll.pop()).toBe("a");
+    expect(ll).toMatchObject({list: new Node("b", new Node("c", new Node("d", null)))});
+
+    const ll2 = new LinkedList();
+    ll2.list = new Node(500, new Node(400, new Node(200, null)));
+    expect(ll2.pop()).toBe(500);
+    expect(ll2).toMatchObject({list: new Node(400, new Node(200, null))});
+})

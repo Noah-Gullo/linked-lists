@@ -73,6 +73,16 @@ export class LinkedList{
             return listCopy.value;
         }
     }
+
+    pop(){
+        if(this.list === null){
+            return undefined;
+        }else{
+            const headValue = this.list.value;
+            this.list = this.list.nextNode;
+            return headValue;
+        }
+    }
 }
 
 export class Node{
