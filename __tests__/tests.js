@@ -1,4 +1,3 @@
-import { experiments } from "webpack";
 import { LinkedList, Node } from "../src/index.js";
 
 test("Blank linked list", () => {
@@ -262,4 +261,30 @@ test("Linked list contains value", () => {
     expect(ll3.contains("a")).toBe(true);
     expect(ll3.contains(-5)).toBe(true);
     expect(ll3.contains(500)).toBe(true);
+})
+
+test("Cannot find index with node", () => {
+    const ll = new LinkedList();
+    expect(ll.findIndex("a")).toBe(-1);
+
+    const ll2 = new LinkedList();
+    ll2.list = new Node("a", new Node("zylophone", new Node(0.5, null)));
+    expect(ll.findIndex("BOO")).toBe(-1);
+})
+
+test("Can find index with node", () => {
+    const ll = new LinkedList();
+    ll.list = new Node("First", null);
+    expect(ll.findIndex("First")).toBe(0);
+
+    const ll2 = new LinkedList();
+    ll2.list = new Node(0, new Node(1, new Node(2, new Node(3, null))));
+    expect(ll2.findIndex(3)).toBe(3);
+
+    const ll3 = new LinkedList();
+    ll3.list = new Node("The", new Node("quick", new Node("brown", new Node("fox"))));
+    expect(ll3.findIndex("The")).toBe(0);
+    expect(ll3.findIndex("quick")).toBe(1);
+    expect(ll3.findIndex("brown")).toBe(2);
+    expect(ll3.findIndex("fox")).toBe(3);
 })

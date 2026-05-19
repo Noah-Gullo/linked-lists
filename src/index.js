@@ -93,6 +93,18 @@ export class LinkedList{
 
         return false;
     }
+
+    findIndex(value){
+        let copy = this.list;
+        let index = 0;
+        while(copy != null){
+            if(copy.value === value) return index;
+            copy = copy.nextNode;
+            index++;
+        }
+
+        return -1;
+    }
 }
 
 export class Node{
